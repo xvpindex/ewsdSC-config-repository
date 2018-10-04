@@ -1,0 +1,66 @@
+boy:
+  age: 32234
+  name: zhaoxiace
+env: dev
+logging:
+  level:
+    cn:
+      ewsd:
+        system:
+          mapper: debug
+mapper:
+  identity: MYSQL
+  mappers:
+  - cn.ewsd.system.bean.SystemMapper
+  not-empty: false
+  style: camelhump
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.ewsd.system.model
+pagehelper:
+  helperDialect: mysql
+  params: count=countSql
+  reasonable: true
+  supportMethodsArguments: true
+server:
+  port: 8767
+spring:
+  application:
+    name: system
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    initialSize: 1
+    maxActive: 20
+    maxOpenPreparedStatements: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 1
+    name: test
+    password: customer@ewsd.cn
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3329/com_zuoyoutech_frame?characterEncoding=UTF-8
+    username: customer
+    validationQuery: select 'x'
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
